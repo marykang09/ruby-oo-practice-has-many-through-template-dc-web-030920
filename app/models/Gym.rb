@@ -27,12 +27,9 @@
         
         def clients 
             #we want every clients that go to the gym
-
-            Membership.all.select do |membership_instance|
-                membership_instance.gym == self
-            end.select do |membership_instance|
+            self.memberships.collect do |membership_instance|
                 membership_instance.client
-            end   
+            end.uniq   
         end
     
         
